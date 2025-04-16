@@ -1,4 +1,3 @@
-
 /********************************************
 * 	reset from
 * 	http://meyerweb.com/eric/tools/css/reset/
@@ -689,10 +688,13 @@ visibility: hidden;
   }
   .main-summary {
       padding: 2rem 0;
+      background: none;
+      border: none;
   }
   .section {
       margin: .8rem 0;
       padding: 0;
+      page-break-inside: avoid;
   }
   .section header {
       padding-bottom: .15rem;
@@ -704,7 +706,7 @@ visibility: hidden;
       content: "";
   }
   .fa.social {
-      color: #828386;
+      color: #000;
   }
   ul {
       margin-top: .4em;
@@ -761,4 +763,94 @@ visibility: hidden;
       display: block;
       opacity: 1 !important;
   }
+  /* Ensure all content is visible when printing */
+  .toggle-item ~ .item {
+      height: auto;
+      opacity: 1;
+  }
+  /* Hide toggle controls when printing */
+  .toggle-item + label {
+      display: none;
+  }
+  /* Add page breaks to avoid splitting content across pages */
+  h2.section-title {
+      page-break-before: auto;
+      page-break-after: avoid;
+  }
+  section.work-item, 
+  section.education-item,
+  section.projects-item {
+      page-break-inside: avoid;
+  }
+}
+
+/****************
+*	MOBILE
+****************/
+
+@media screen and (max-width: 601px) {
+  #resume {
+    width: 95%;
+    margin: 0 auto;
+    padding: 0.5rem;
+  }
+
+  #header h1.name {
+    font-size: 2rem;
+    line-height: 1.2;
+  }
+
+  #header h2.label {
+    font-size: 1.2rem;
+  }
+
+  #contact {
+    flex-direction: column;
+  }
+
+  #contact div {
+    margin-bottom: 0.5rem;
+  }
+
+  #skills {
+    flex-direction: column;
+  }
+
+  #skills .item {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+
+  .section header .date {
+    display: block;
+    float: none;
+    margin-top: 0.5em;
+  }
+  
+  ul.keywords li,
+  ul.courses li {
+    margin-bottom: 0.5rem;
+  }
+}
+
+/* PDF download button */
+
+.pdf-download a {
+  display: inline-flex;
+  align-items: center;
+  background-color: #ff6d1f;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease;
+}
+
+.pdf-download a:hover {
+  background-color: #e05c13;
+  color: white;
+  text-decoration: none;
+}
+
+.pdf-download .fa {
+  margin-right: 5px;
 }
